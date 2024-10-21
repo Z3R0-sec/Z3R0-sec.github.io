@@ -6,24 +6,43 @@ tags: [Test]
 render_with_liquid: false
 img_path: /images/
 image:
-  path: images/animegirl.webp
+  path: /images/animegirl.png
 ---
 
-![Tryhackme Room Link](/images/animegirl.webp){: width="600" height="150" .shadow }
+![Alt text](/images/animegirl.png)
 
 # Hello world
 
 Hello world this is my personal blog
 
 
-
 ```console
-test
+ping -c4 8.8.8.8 > output.txt
 
 ```
 
-## Heading 2
-test test
 
-## Heading 3
+
+
+> An example 
+{: .prompt-tip }
+
+> An example showing the `info` type prompt.
+{: .prompt-info }
+
+> An example showing the `warning` type prompt.
+{: .prompt-warning }
+
+> An example showing the `danger` type prompt.
+{: .prompt-danger }
+
+## Images
+### Test Image Heading
+![Desktop View](/images/animegirl.png){: width="972" height="589" }
+_Full screen width and center alignment_
+### Left aligned
+![Desktop View](/images/animegirl.png){: width="972" height="589" .w-75 .normal}
+
+
+
 
