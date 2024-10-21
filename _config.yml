@@ -9,7 +9,7 @@ theme: jekyll-theme-chirpy
 lang: en
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone:
+timezone: America/New_York
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
@@ -26,10 +26,10 @@ description: >- # used by seo meta and the atom feed
 url: "https://dizrupty.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: Dizrupty # change to your GitHub username
 
 twitter:
-  username: twitter_username # change to your Twitter username
+  username: Z3R0sec # change to your Twitter username
 
 social:
   # Change to your full name.
@@ -98,7 +98,7 @@ theme_mode: dark # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets\images\animegirl.png
+avatar: /images/animegirl.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

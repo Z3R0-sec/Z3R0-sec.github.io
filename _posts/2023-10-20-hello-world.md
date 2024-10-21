@@ -9,7 +9,7 @@ image:
   path: images/animegirl.webp
 ---
 
-![Tryhackme Room Link](images/animegirl.webp){: width="600" height="150" .shadow }
+![Tryhackme Room Link](/images/animegirl.webp){: width="600" height="150" .shadow }
 
 # Hello world
 
