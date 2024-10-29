@@ -8,8 +8,8 @@ pin: true
 math: true
 mermaid: true
 comments: true
-media_subpath: /images/UAHS
-img_path: /images/UAHS
+media_subpath: /images/uahs
+img_path: /images/uahs
 image:
   path: oneforall.jpg
 ---
