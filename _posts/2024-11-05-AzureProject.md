@@ -11,7 +11,7 @@ comments: true
 media_subpath: /images/AzureProject
 img_path: /images/AzureProject
 image:
-  path: thumbnail.webp
+  path: Thumbnail.webp
 ---
 
  This is a writeup of the process I went through to build, deploy, and test a Security Information and Event Management (SIEM) system using Microsoft Sentinel. This is a great way to get practical experience with a cloud-based SIEM and learn how to monitor and respond to security incidents in a cloud environment.
