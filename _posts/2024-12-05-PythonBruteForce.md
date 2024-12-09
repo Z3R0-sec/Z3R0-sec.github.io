@@ -24,12 +24,13 @@ image:
 
 ## Introduction: Lab Setup
 
-Pwntools is a powerful Python library designed for binary exploitation, reverse engineering, and CTF (Capture The Flag) challenges. It provides tools and utilities to interact with processes, remote services, and shellcode, making it a staple for cybersecurity professionals and enthusiasts. Be sure to have `pwntools` installed before getting started.
+`Pwntools` is a powerful Python library designed for binary exploitation, reverse engineering, and pentesting. It provides tools and utilities to interact with processes, remote services, and shellcode, making it a staple for cybersecurity professionals and enthusiasts. Be sure to have `pwntools` installed before getting started.
 
 ```shell
 pip install pwntools
 ```
-The Metasploitable2 server is a vulnerable virtual machine that is designed for penetration testing and security training. It contains many known vulnerabilities and misconfigurations that can be exploited for educational purposes. You can download it from [Rapid7](https://docs.rapid7.com/metasploit/metasploitable-2/)
+
+The Metasploitable2 server is a vulnerable virtual machine that is designed for penetration testing and security training. It contains many known vulnerabilities and misconfigurations that can be exploited for educational purposes. You can download it from [Rapid7](https://docs.rapid7.com/metasploit/metasploitable-2/). It will be used here to connect to and test the SSH brute force tool.
 
 The network diagram for this lab looks like this:
 
@@ -43,6 +44,7 @@ We'll start by going through each line of code individually to understand how th
 from pwn import *
 import paramiko
 ```
+
 These first two lines of code import pwn module and paramiko modules. These modules grant users access to a number of tools that can help us accomplish our goals: `pwn` will allow this script to interact with SSH, and `paramiko` will be used for more SSH compatibility and error handling.
 
 ```python
@@ -50,6 +52,7 @@ host = "X.X.X.X"
 username = "user"
 attempts = 0
 ```
+
 This block will define the variables the script will use. `Host` indicates the IP that will be targeted, `username` is the user that will be bruteforced, and I am including `attempts` to keep a log of the number of passwords tried.
 
 ```python
@@ -57,12 +60,13 @@ with open("passwords.txt", "r") as password_list:
 	for password in password_list:
 		password = password.strip("\n")
 ```
-Here, the password list is defined with open (passwords.txt is a sample and can be changed with any file).  The passwords are stripped into a plain format that can be input during authentication with SSH, and defined as password.
+Here, the password list is defined (passwords.txt is a sample and can be changed with any file).  The passwords are stripped into a plain format that can be input during authentication with SSH.
 
 ```python
     try:
           print("[{}] Attempting password: '{}'!".format(attempts, password))
 ```
+
 This section of the code will print the `attempt` number in between `[]`, indicating the number of passwords that have been attempted, and it will also display which `password` is being attempted. 
 
 ```python
@@ -73,6 +77,7 @@ This section of the code will print the `attempt` number in between `[]`, indica
               break
             response.close()
 ```
+
 This is the main section of the code. The reponse variable is defined with ssh, which is imported from the pwn module. We give it the `host`, `user`, and `password` parameters using the global variables defined at the beginning of the script, and `timeout`in line.
 
 If the credentials are correct and a connection is successful, the line `"[>] Valid password found: password!"` is diplayed and the connection is closed. If the password was not correct, the connection is closed, the loop is broken, and the next password in the list is attempted until the end of the wordlist.
@@ -109,7 +114,8 @@ with open("passwords.txt", "r") as password_list:
 			print("[X] Invalid password!")
 		attempts += 1
 ```
-This is the completed program configured for the user "msfadmin" and on the Metasploitable VM. The output should show each password attempted one by one, and a success or fail message for each.  We will now test to see if there are any unexpected logic or syntax errors.
+
+This is the completed program configured for the user "msfadmin" on the Metasploitable VM. The output should show each password attempted one by one, and a success or fail message for each.  We will now test to see if there are any unexpected logic or syntax errors.
 
 ### Testing v1.0
 
@@ -128,9 +134,11 @@ First, we will need to make a wordlist to use as a test, "passwords.txt" was use
 <!-- markdownlint-restore -->
 
 Verify the file was created and populated:
+
 ![Screenshot](picture8.png)
 
 With the list, we can now attempt to brute force SSH on the Metasploitable VM.
+
 ![Screenshot](picture9.png)
 
 The brute force was successful and correcttly identified the credentials for the msfadmin user. Additionally, the counter is correctly working and we can see the program working in real time.
@@ -148,6 +156,7 @@ import paramiko
 from time import sleep
 from concurrent.futures import ThreadPoolExecutor, as_completed
 ```
+
 Starting with the inputs, the `pwn` and `paramiko` modules are still used to allow for SSH interaction that we need. The new imports are `from time import sleep` and `from concurrent.features ThreadPoolExecuter, as_completed`. These new modules will allow for a delay between attempts to avoid overwhelming SSH with connections, and allows for multithreading. This what the script uses to run the attempts concurrently.
 
 ```python
@@ -159,8 +168,8 @@ found = False
 max_threads = 5
 retry_delay = 2
 ```
-The `host`, `username`, and `attempts` variable will remain the same as the previous version. We add `found = False` to indicate when a valid password is found to stop attempting passwords, `max_threads` sets the number of threads to use, and `retry_delay` will add a 2 second delay to help with error checking.
 
+The `host`, `username`, and `attempts` variable will remain the same as the previous version. We add `found = False` to indicate when a valid password is found to stop attempting passwords, `max_threads` sets the number of threads to use, and `retry_delay` will add a 2 second delay to help with error checking.
 
 ```python
 # test password function
@@ -169,8 +178,8 @@ def test_password(password):
     if found:
         return None
 ```
-This is the function that will be used to test the passwords. The global argument is added for the `attempts` and `found` variables to ensure that the function can alter the variables declared at the start of the script. 
 
+This is the function that will be used to test the passwords. The global argument is added for the `attempts` and `found` variables to ensure that the function can alter the variables declared at the start of the script. 
 
 ```python
     try:
@@ -183,8 +192,8 @@ This is the function that will be used to test the passwords. The global argumen
             return password
         response.close()
 ```
-The next section of the code will attempt to connect via SSH with the variables passed into it for each password in the list. If a connection is successful, the `"Valid password"` string will be printed with the correct password using `log.success`, closes the connection, and sets the `"found"` to `True`. 
 
+The next section of the code will attempt to connect via SSH with the variables passed into it for each password in the list. If a connection is successful, the `"Valid password"` string will be printed with the correct password using `log.success`, closes the connection, and sets the `"found"` to `True`. 
 
 ```python
       except paramiko.ssh_exception.AuthenticationException:
@@ -193,14 +202,15 @@ The next section of the code will attempt to connect via SSH with the variables 
         sleep(retry_delay)
     return None
 ```
-This block is used for any error checking relating to SSH and logs invalid password attempts to display in the terminal.
 
+This block is used for any error checking relating to SSH and logs invalid password attempts to display in the terminal.
 
 ```python
 # reads passwords.txt
 with open("passwords.txt", "r") as password_list:
     passwords = [line.strip() for line in password_list]
 ```
+
 A similar method will be used for setting up the password list. The syntax is improved by performing the strip and defining the `passwords` list in one line. 
 
 ```python
@@ -214,6 +224,7 @@ with ThreadPoolExecutor(max_threads) as executor:
 
 log.info("[*] Passwordlist exhausted!")
 ```
+
 This new block of code does a lot of the lifting in the upgraded version. Implementing this in the script allows up to use a max number of threads (defined earlier with `max_threads`) to run attempts concurrently. The results are retrieved and the loop is broken when the valid password is found. A final message is also displayed when the password list is exhausted.
 
 The updated version of the script is below:
@@ -267,6 +278,7 @@ with ThreadPoolExecutor(max_threads) as executor:
 
 log.info("[*] Passwordlist exhausted!")
 ```
+
 This is the completed version of the script. It is more efficient and user-friendly than the previous version. The output should show each password attempted one by one, and a success or fail message for each.  We will now test to see if there are any unexpected logic or syntax errors.
 
 ### Testing v2.0
@@ -339,6 +351,7 @@ with ThreadPoolExecutor(max_threads) as executor:
 # final message
 log.info("[*] Passwordlist exhausted!")
 ```
+
 ![Screenshot](picture20.png){: width="972" height="589"} 
 
 The update is successful, we can see the password was found and the program is working as expected. This code can still be improved, but it is a good starting point for a simple SSH brute force tool! Using the password to log into Metasploitable2, we can see the successful login message:
@@ -347,7 +360,7 @@ The update is successful, we can see the password was found and the program is w
 
 ## Conclusion
 
-In this lab, we have succesfully created a simple SSH brute force tool in Python. We started with a basic version that was slow and inefficient, and improved it by speeding up the process and adding user input. This tool can be used to test the security of SSH logins on a target server, and can be further customized and expanded for more advanced use cases. Python[^1] is a powerful language for cybersecurity professionals, and creating tools like this can help improve your skills and understanding of security concepts. Libraries like `pwntools`[^2] and `paramiko`[^3] can help extend the functionality of Python.This tool will be available on my [GitHub](https://github.com/Z3R0-sec) anybody to use safely and responsibly.
+In this lab, we have succesfully created a simple SSH brute force tool in Python. We started with a basic version that was slow and inefficient, and improved it by speeding up the process and adding user input. This tool can be used to test the security of SSH logins on a target server, and can be further customized and expanded for more advanced use cases. Python[^1] is a powerful language for cybersecurity professionals, and creating tools like this can help improve your skills and understanding of security concepts. Libraries like `pwntools`[^2] and `paramiko`[^3] can help extend the functionality of Python. This tool will be available on my [GitHub](https://github.com/Z3R0-sec) anybody to use safely and responsibly.
 
 ### Useful Resources
 
