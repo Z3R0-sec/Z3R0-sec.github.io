@@ -1,6 +1,6 @@
 ---
 title: "Learning Python: SSH Bruteforcing"
-description: A lab creating a simple SSH brute force tool and testing it against a target
+description: A lab creating a simple SSH bruteforce tool and testing it against a target
 date: 2024-12-05 00:00:00 +0000
 categories: [Project, Lab]
 tags: [Python, SSH, brute force, lab, pentest]
