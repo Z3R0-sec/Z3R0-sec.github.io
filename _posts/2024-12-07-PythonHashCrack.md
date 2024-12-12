@@ -2,7 +2,7 @@
 title: "Learning Python: Hash Cracking"
 description: Working through making a Python program to crack SHA-256 Passwords
 date: 2024-12-07 00:00:00 +0000
-categories: [Project, Lab]
+categories: [Learning Topics, Python]
 tags: [Python, tools, sha256, lab, pentest, hash, pwn]
 pin: true
 math: true
@@ -19,6 +19,12 @@ image:
 <!-- markdownlint-capture -->
 <!-- markdownlint-disable -->
 > Objectives: Create a Python program to crack hashes using a wordlist.
+{: .prompt-info }
+<!-- markdownlint-restore -->
+
+<!-- markdownlint-capture -->
+<!-- markdownlint-disable -->
+> UPDATE: This tool is now available on my GitHub: [Z3R0Sec Hashcracker](https://github.com/Z3R0-sec/zs_hashcracker)
 {: .prompt-info }
 <!-- markdownlint-restore -->
 

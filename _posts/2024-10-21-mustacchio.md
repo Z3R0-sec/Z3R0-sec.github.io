@@ -2,9 +2,9 @@
 title: Mustacchio
 description: Writeup of the TryHackMe room Mustacchio
 date: 2024-10-21 00:00:00 +0000
-categories: [THM, Writeup]
+categories: [Writeup, Red Team]
 tags: [ctf, linux, web, thm, writeup, ghidra, burpsuite, gobuster, nmap, ssh, john, sqlite, xxe, suid]
-pin: True
+pin: false
 math: true
 mermaid: true
 comments: true

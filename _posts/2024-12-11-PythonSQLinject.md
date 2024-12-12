@@ -2,7 +2,7 @@
 title: "Learning Python: SQL Injection"
 description: Creating a vulnerable web application and tool to practice SQL injection attacks
 date: 2024-12-10 00:00:00 +0000
-categories: [Project, Lab]
+categories: [Learning Topics, Python]
 tags: [Python, tools, sql, lab, pentest, hash, web, flask]
 pin: true
 math: true

@@ -63,6 +63,9 @@ Hello, my name is Tony and this is my first ever blog. I'm a Cybersecurity stude
 **Google IT Support Professional Certificate**  
 : This certificate is designed to prepare you for an entry-level role in IT support. It covers a wide range of topics including troubleshooting, customer service, networking, operating systems, system administration, and security.
 
+**TCM Security - Python 101 For Hackers**  
+: This course covers the basics of Python programming and its use in pentesting and security. It includes topics such as Python syntax, data types, functions, and libraries, as well as how to use Python to create custom exploitation scripts.
+
 **TryHackMe - Cybersecurity 101**  
 : Covers essential areas such as computer networking, cryptography, and the basics of MS Windows, Active Directory, and Linux. Additionally, the path explores offensive security tools and system exploitation techniques, as well as defensive security solutions.
 

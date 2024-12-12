@@ -2,7 +2,7 @@
 title: "U.A High School"
 description: Writeup of the TryHackMe challenge U.A High School
 date: 2024-10-28 00:00:00 +0000
-categories: [THM, Writeup]
+categories: [Writeup, Red Team]
 tags: [ctf, linux, web, thm, writeup, nmap, ssh, hexeditor, xxd, gobuster]
 pin: true
 math: true
@@ -30,7 +30,7 @@ image:
 Like any challenge, it is important to first do some enumeration to understand what services are running on the target machine. There are many ways to do this, such as port scanning with `NMAP`, or fuzzing directories to find hidden locations. In this case, I will be using a custom `Python` script to automate this process while we manually examine the target. I created this tool, and will be releasing it soon on my [GitHub](https://github.com/Z3R0-sec). This script just runs `NMAP` and `Gobuster` in the background and displays the results in a simple format. Below are the results of the scan:
 
 ![Screenshot](Screenshot_2.png){: width="972" height="589" .w-50 .normal}
-![Screenshot](Screenshot_4.png){: width="972" height="589" .w-50 .normal}  
+![Screenshot](Screenshot_4.png){: width="972" height="589" .w-50 .normal} 
 
 ### Checking out the Website
 We only see two ports open, `22` and `80`. There is also an `/assets`{: .filepath} directory that we will visit later. For now, let's walk the website and see what we can find.

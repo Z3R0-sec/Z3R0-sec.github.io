@@ -2,7 +2,7 @@
 title: "Learning Python: Web Bruteforcing"
 description: Working through making a Python program to bruteforce web login pages
 date: 2024-12-10 00:00:00 +0000
-categories: [Project, Lab]
+categories: [Learning Topics, Python]
 tags: [Python, tools, brute force, lab, pentest, hash, web]
 pin: true
 math: true
