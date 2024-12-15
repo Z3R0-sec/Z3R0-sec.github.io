@@ -83,7 +83,7 @@ Certifications I am currently working on or plan to obtain in the near future:
 | Badge Name            | Task Completed                                |
 | --------------------  | --------------------------------------------- |
 | Pentesting Principles | Completed THM's Introduction to Pentesting    |
-| Packet Master         | Completed THM's Introduction to Pentesting    |
+| Packet Master         | Mastery of Network Tools: Snort, Zeek, Brim, NetworkMiner, Tshark, and Wireshark   |
 | Networking Nerd       | Completed THM's Networking Fundamentals       |
 | OWASP Top 10          | Understanding every OWASP vulnerability       |
 | Blue                  | Hacking into Windows via EternalBlue          |
